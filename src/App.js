@@ -23,16 +23,18 @@ class App extends Component {
   }
 
   startButtonHandle(){
-    console.log('pressing it')
-    let interval = setInterval(() => this.tick(), 1000);
-    this.setState({
-      interval: interval,
-    });
+    if(this.state.interval == null){
+      let interval = setInterval(() => this.tick(), 1000);
+      this.setState({
+        interval: interval,
+      });
+    }
   }
 
   stopButtonHandle(){
     clearInterval(this.state.interval);
     this.setState({
+      interval: null,
       seconds: 0,
       minutes: 0,
     });
