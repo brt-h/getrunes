@@ -11,11 +11,19 @@ class App extends Component {
       interval: null,
       seconds: 0,
       minutes: 0,
+      alertRunes: false,
+      goldGiven: 0,
     }
   }
 
   tick(){
     let updatedTime = this.state.seconds + this.state.minutes * 60;
+    if(updatedTime % 300 === 0 && updatedTime !== 0){
+      let goldGiven = 2 * this.state.minutes;
+      this.setState({
+        goldGiven: goldGiven
+      })
+    }
     updatedTime += 1;
     let newSeconds = updatedTime % 60;
     let newMinutes = Math.floor(updatedTime / 60);
@@ -27,7 +35,7 @@ class App extends Component {
 
   startButtonHandle(){
     if(this.state.interval == null){
-      let interval = setInterval(() => this.tick(), 1000);
+      let interval = setInterval(() => this.tick(), 1);
       this.setState({
         interval: interval,
       });
@@ -40,6 +48,8 @@ class App extends Component {
       interval: null,
       seconds: 0,
       minutes: 0,
+      alertRunes: false,
+      goldGiven: 0,
     });
   }
 
@@ -55,7 +65,7 @@ class App extends Component {
                          handleClickStop={() =>this.stopButtonHandle()}>
                          </ButtonContainer>
 
-        <RunesContainer></RunesContainer>
+        <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
       </div>
     );
   }
