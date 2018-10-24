@@ -23,7 +23,8 @@ class App extends Component {
   }
 
   startButtonHandle(){
-    let interval = setInterval(this.tick.bind(this), 1000);
+    console.log('pressing it')
+    let interval = setInterval(() => this.tick(), 1000);
     this.setState({
       interval: interval,
     });
@@ -50,8 +51,8 @@ class App extends Component {
 
 
         <div className="ButtonContainer">
-          <div className="StartButton" onClick={this.startButtonHandle.bind(this)}>START</div>
-          <div className="StopButton" onClick={this.stopButtonHandle.bind(this)}>STOP</div>
+          <div className="StartButton" onClick={() => this.startButtonHandle()}>START</div>
+          <div className="StopButton" onClick={() => this.stopButtonHandle()}>STOP</div>
         </div>
 
 
