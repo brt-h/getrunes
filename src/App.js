@@ -12,8 +12,9 @@ class App extends Component {
   }
 
   tick(){
-    let updatedTime = this.state.seconds;
+    let updatedTime = this.state.seconds + this.state.minutes * 60;
     updatedTime += 1;
+    //console.log(updatedTime);
     let newSeconds = updatedTime % 60;
     let newMinutes = Math.floor(updatedTime / 60);
     this.setState({
