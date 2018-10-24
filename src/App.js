@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Timer from './components/Timer.js';
+import ButtonContainer from './components/ButtonContainer.js';
+import RunesContainer from './components/RunesContainer.js';
 import './App.css';
 
 class App extends Component {
@@ -6,15 +9,14 @@ class App extends Component {
     super(props);
     this.state = {
       interval: null,
-      seconds: 0,   // responsible for the seconds
-      minutes: 0,  // responsible for the minutes
+      seconds: 0,
+      minutes: 0,
     }
   }
 
   tick(){
     let updatedTime = this.state.seconds + this.state.minutes * 60;
     updatedTime += 1;
-    //console.log(updatedTime);
     let newSeconds = updatedTime % 60;
     let newMinutes = Math.floor(updatedTime / 60);
     this.setState({
@@ -47,26 +49,14 @@ class App extends Component {
         <div className="Title">Get Runes!</div>
 
 
-        <div className="TimerContainer">
-          <div className="TimerMins">{this.state.minutes < 10 ? '0'+ this.state.minutes : this.state.minutes}</div>
-          <div className="TimerSecs">{this.state.seconds < 10 ? '0'+ this.state.seconds : this.state.seconds}</div>
-        </div>
+        <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
 
+        <ButtonContainer handleClickStart={() => this.startButtonHandle()}
+                         handleClickStop={() =>this.stopButtonHandle()}>
+                         </ButtonContainer>
 
-        <div className="ButtonContainer">
-          <div className="StartButton" onClick={() => this.startButtonHandle()}>START</div>
-          <div className="StopButton" onClick={() => this.stopButtonHandle()}>STOP</div>
-        </div>
-
-
-        <div className="RuneTable">
-          <div className="RuneTableRow">RUNE 1</div>
-          <div className="RuneTableRow">RUNE 2</div>
-          <div className="RuneTableRow">RUNE 3</div>
-          <div className="RuneTableRow">RUNE 4</div>
-        </div>
+        <RunesContainer></RunesContainer>
       </div>
-
     );
   }
 }
