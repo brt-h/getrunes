@@ -48,8 +48,8 @@ class App extends Component {
 
 
         <div className="TimerContainer">
-          <div className="TimerMins">{this.state.minutes}</div>
-          <div className="TimerSecs">{this.state.seconds}</div>
+          <div className="TimerMins">{this.state.minutes < 10 ? '0'+ this.state.minutes : this.state.minutes}</div>
+          <div className="TimerSecs">{this.state.seconds < 10 ? '0'+ this.state.seconds : this.state.seconds}</div>
         </div>
 
 
