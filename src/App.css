@@ -16,7 +16,7 @@
 }
 
 .TimerContainer {
-  margin: 10%;
+  margin: 5%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -48,4 +48,17 @@
 
 .StopB {
   background-color: red;
+}
+
+.runeTable {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.5em;
+}
+
+.runeRow {
+  display: flex;
+  justify-content: space-around;
+  height: 5%;
 }
