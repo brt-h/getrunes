@@ -35,7 +35,7 @@ class App extends Component {
 
   startButtonHandle(){
     if(this.state.interval == null){
-      let interval = setInterval(() => this.tick(), 1);
+      let interval = setInterval(() => this.tick(), 100);
       this.setState({
         interval: interval,
       });
