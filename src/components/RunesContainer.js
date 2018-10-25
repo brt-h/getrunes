@@ -4,7 +4,7 @@ class RunesContainer extends Component {
   render() {
     return (
       <div>
-        <div className="tableTitle">Next Bounty Runes Info</div>
+        <div className="tableTitle">Upcoming Bounty Runes</div>
         <div className="runeTable">
           <div className="runeCol">
             <div className="runeTitle"># of Runes</div>
