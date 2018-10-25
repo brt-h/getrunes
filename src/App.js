@@ -56,16 +56,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="Title">Get Runes!</div>
+        <div className="mainContainer">
+          <div className="Title">Get Runes!</div>
 
+          <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
 
-        <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
+          <ButtonContainer handleClickStart={() => this.startButtonHandle()}
+                           handleClickStop={() =>this.stopButtonHandle()}>
+                           </ButtonContainer>
 
-        <ButtonContainer handleClickStart={() => this.startButtonHandle()}
-                         handleClickStop={() =>this.stopButtonHandle()}>
-                         </ButtonContainer>
-
-        <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
+          <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
+        </div>
       </div>
     );
   }

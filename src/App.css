@@ -1,1 +1,10 @@
+.App {
 
+}
+
+.mainContainer {
+  margin: 2.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
