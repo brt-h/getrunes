@@ -64,7 +64,7 @@ class App extends Component {
       <div className="App">
         <div className="mainContainer">
           <div className="Title">
-            Get Runes!
+            GET RUNES!
           </div>
 
           <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
