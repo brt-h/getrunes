@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Timer from './components/Timer.js';
-import Bountyrune from './images/bountyrune.png';
 import ButtonContainer from './components/ButtonContainer.js';
 import RunesContainer from './components/RunesContainer.js';
 import './App.css';
@@ -65,7 +64,7 @@ class App extends Component {
       <div className="App">
         <div className="mainContainer">
           <div className="Title">
-            <img src={Bountyrune}/>Get Runes!
+            Get Runes!
           </div>
 
           <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
