@@ -16,8 +16,36 @@
 }
 
 .TimerContainer {
+  margin: 10%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   font-size: 7.5em;
+}
+
+.ButtonContainer{
+  margin: 1%;
+  display: flex;
+  flex-direction: row;
+}
+
+.Button {
+  margin: 5%;
+  width: 125px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button:hover {
+  cursor: pointer;
+}
+
+.StartB {
+  background-color: green;
+}
+
+.StopB {
+  background-color: red;
 }
