@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timer from './components/Timer.js';
+import Bountyrune from './images/bountyrune.png';
 import ButtonContainer from './components/ButtonContainer.js';
 import RunesContainer from './components/RunesContainer.js';
 import './App.css';
@@ -8,6 +9,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      start: false,
       interval: null,
       seconds: 0,
       minutes: 0,
@@ -37,6 +39,7 @@ class App extends Component {
     if(this.state.interval == null){
       let interval = setInterval(() => this.tick(), 100);
       this.setState({
+        start: true,
         interval: interval,
       });
     }
@@ -53,11 +56,17 @@ class App extends Component {
     });
   }
 
+  pauseButtonHandle(){
+
+  }
+
   render() {
     return (
       <div className="App">
         <div className="mainContainer">
-          <div className="Title">Get Runes!</div>
+          <div className="Title">
+            <img src={Bountyrune}/>Get Runes!
+          </div>
 
           <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
 
