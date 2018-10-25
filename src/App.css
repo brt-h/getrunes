@@ -17,7 +17,7 @@
   height: auto;
   font-family: 'Montserrat', sans-serif;
   padding: 20px;
-  /* border: 5px solid white; */
+  color: #f37735;
   text-shadow: horizontal-offset vertical-offset blur color;
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
@@ -75,11 +75,16 @@
 
 .runeTable {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   font-size: 1.5em;
 }
 
-.runeRow {
-  height: 5%;
+.runeCol {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
 }
