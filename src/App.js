@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      start: false,
+      started: false,
       interval: null,
       seconds: 0,
       minutes: 0,
@@ -18,28 +18,35 @@ class App extends Component {
   }
 
   tick(){
-    let updatedTime = this.state.seconds + this.state.minutes * 60;
-    if(updatedTime % 300 === 0 && updatedTime !== 0){
-      let goldGiven = 2 * this.state.minutes;
+    if(this.state.started) {
+      let updatedTime = this.state.seconds + this.state.minutes * 60;
+      if(updatedTime % 300 === 0 && updatedTime !== 0){
+        let goldGiven = 2 * this.state.minutes;
+        this.setState({
+          goldGiven: goldGiven
+        })
+      }
+      updatedTime += 1;
+      let newSeconds = updatedTime % 60;
+      let newMinutes = Math.floor(updatedTime / 60);
       this.setState({
-        goldGiven: goldGiven
-      })
+        seconds: newSeconds,
+        minutes: newMinutes,
+      });
     }
-    updatedTime += 1;
-    let newSeconds = updatedTime % 60;
-    let newMinutes = Math.floor(updatedTime / 60);
-    this.setState({
-      seconds: newSeconds,
-      minutes: newMinutes,
-    });
   }
 
   startButtonHandle(){
     if(this.state.interval == null){
       let interval = setInterval(() => this.tick(), 100);
       this.setState({
-        start: true,
+        started: true,
         interval: interval,
+      });
+    }
+    else {
+      this.setState({
+        started: true,
       });
     }
   }
@@ -52,11 +59,14 @@ class App extends Component {
       minutes: 0,
       alertRunes: false,
       goldGiven: 0,
+      started: false,
     });
   }
 
   pauseButtonHandle(){
-
+    this.setState({
+      started: false,
+    });
   }
 
   render() {
@@ -69,8 +79,10 @@ class App extends Component {
 
           <Timer minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
 
-          <ButtonContainer handleClickStart={() => this.startButtonHandle()}
-                           handleClickStop={() =>this.stopButtonHandle()}>
+          <ButtonContainer started={this.state.started}
+                           handleClickStart={() => this.startButtonHandle()}
+                           handleClickStop={() =>this.stopButtonHandle()}
+                           handleClickPause={() =>this.pauseButtonHandle()}>
                            </ButtonContainer>
 
           <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
