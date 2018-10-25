@@ -5,6 +5,7 @@ class Timer extends Component {
     return (
       <div className="TimerContainer">
         <div className="TimerMins">{this.props.minutes < 10 ? '0'+ this.props.minutes : this.props.minutes}</div>
+        <div> : </div>
         <div className="TimerSecs">{this.props.seconds < 10 ? '0'+ this.props.seconds : this.props.seconds}</div>
       </div>
     );
