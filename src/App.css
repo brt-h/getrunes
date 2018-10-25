@@ -90,5 +90,16 @@
 }
 
 .runeTitle {
+  width: 100%;
   color: #f37735;
+  text-align: center;
+}
+
+.runeRow {
+  width: 100%;
+  text-align: center;
+}
+
+.odd {
+  background-color: #EEEEEE;
 }
