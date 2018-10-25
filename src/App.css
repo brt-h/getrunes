@@ -88,3 +88,7 @@
   align-items: center;
   border: 1px solid black;
 }
+
+.runeTitle {
+  color: #f37735;
+}

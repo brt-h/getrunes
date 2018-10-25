@@ -20,8 +20,8 @@ class App extends Component {
   tick(){
     if(this.state.started) {
       let updatedTime = this.state.seconds + this.state.minutes * 60;
-      if(updatedTime % 300 === 0 && updatedTime !== 0){
-        let goldGiven = 2 * this.state.minutes;
+      if(updatedTime % 300 === 0){
+        let goldGiven = 2 * (this.state.minutes + 5);
         this.setState({
           goldGiven: goldGiven
         })
