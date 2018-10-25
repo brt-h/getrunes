@@ -16,6 +16,8 @@
   text-align: center;
   height: auto;
   font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  border: 5px solid white;
 }
 
 .TimerContainer {
@@ -24,7 +26,6 @@
   flex-direction: row;
   align-items: flex-end;
   font-size: 6em;
-  /* color: #f59a06; */
 }
 
 .ButtonContainer{
@@ -47,11 +48,11 @@
 }
 
 .StartB {
-  background-color: green;
+  background-color: #fbaa06;
 }
 
 .StopB {
-  background-color: red;
+  background-color: #f08806;
 }
 
 .runeTable {
