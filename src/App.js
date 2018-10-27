@@ -26,6 +26,9 @@ class App extends Component {
           goldGiven: goldGiven
         })
       }
+      if((updatedTime - 30) % 300 === 0){
+        document.getElementById('beep').play();
+      }
       updatedTime += 1;
       let newSeconds = updatedTime % 60;
       let newMinutes = Math.floor(updatedTime / 60);
