@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Timer from './components/Timer.js';
 import ButtonContainer from './components/ButtonContainer.js';
 import RunesContainer from './components/RunesContainer.js';
+import {Howl, Howler} from 'howler';
+import soundfile from './roons_short.mp3';
 import './App.css';
 
 class App extends Component {
@@ -10,11 +12,21 @@ class App extends Component {
     this.state = {
       started: false,
       interval: null,
-      seconds: 48,
-      minutes: 4,
+      seconds: 0,
+      minutes: 0,
       alertRunes: false,
       goldGiven: 0,
+      sounds: [],
     }
+  }
+  componentDidMount() {
+    let roons_sound = new Howl({
+      src: [soundfile]
+    });
+    this.setState({
+        sounds:[roons_sound]
+    })
+
   }
 
   tick(){
@@ -35,6 +47,7 @@ class App extends Component {
         })
       }
       if((updatedTime + 10) % 300 === 0){
+        this.state.sounds[0].play();
         this.setState({
           alertRunes: true,
         })
@@ -44,7 +57,7 @@ class App extends Component {
 
   startButtonHandle(){
     if(this.state.interval == null){
-      let interval = setInterval(() => this.tick(), 1000);
+      let interval = setInterval(() => this.tick(), 10);
       this.setState({
         started: true,
         interval: interval,
@@ -79,7 +92,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="mainContainer">
-          <div className="Title animated fadeIn">
+          <div className="Title">
             <span style={{color: '#474b52'}}>GET</span> RUNES!
           </div>
 
