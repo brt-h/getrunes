@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Timer from './components/Timer.js';
 import ButtonContainer from './components/ButtonContainer.js';
 import RunesContainer from './components/RunesContainer.js';
+import SoundButtonContainer from './components/SoundButtonContainer.js';
 import {Howl, Howler} from 'howler';
 import soundfile from './roons_short.mp3';
 import './App.css';
@@ -12,11 +13,13 @@ class App extends Component {
     this.state = {
       started: false,
       interval: null,
-      seconds: 0,
-      minutes: 0,
+      seconds: 38,
+      minutes: 4,
       alertRunes: false,
       goldGiven: 0,
       sounds: [],
+      volume: 0.5,
+      mute: false,
     }
   }
   componentDidMount() {
@@ -46,7 +49,7 @@ class App extends Component {
           alertRunes: false,
         })
       }
-      if((updatedTime + 10) % 300 === 0){
+      if((updatedTime + 20) % 300 === 0){
         this.state.sounds[0].play();
         this.setState({
           alertRunes: true,
@@ -57,7 +60,7 @@ class App extends Component {
 
   startButtonHandle(){
     if(this.state.interval == null){
-      let interval = setInterval(() => this.tick(), 10);
+      let interval = setInterval(() => this.tick(), 1000);
       this.setState({
         started: true,
         interval: interval,
@@ -88,6 +91,45 @@ class App extends Component {
     });
   }
 
+  handlePlus() {
+    console.log("plus")
+    let updatedVol = this.state.volume + 0.1;
+    if(updatedVol > 1) {
+      updatedVol = 1;
+    }
+    this.setState({
+      volume: updatedVol,
+    });
+    Howler.volume(updatedVol)
+  }
+
+  handleMinus() {
+    console.log("minus")
+    let updatedVol = this.state.volume - 0.1;
+    if(updatedVol < 0) {
+      updatedVol = 0;
+    }
+    Howler.volume(updatedVol)
+    this.setState({
+      volume: updatedVol,
+    });
+  }
+
+  handleMute() {
+    console.log("mute")
+    if(this.state.mute) {
+      Howler.mute(false);
+      this.setState({
+        mute: false,
+      });
+    } else {
+      Howler.mute(true);
+      this.setState({
+        mute: true,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -103,6 +145,13 @@ class App extends Component {
                            handleClickStop={() =>this.stopButtonHandle()}
                            handleClickPause={() =>this.pauseButtonHandle()}>
                            </ButtonContainer>
+
+          <SoundButtonContainer
+          handlePlus={() => this.handlePlus()}
+          handleMinus={()=> this.handleMinus()}
+          handleMute={() => this.handleMute()}
+          vol={this.state.volume}
+          mute={this.state.mute}></SoundButtonContainer>
 
           <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
         </div>
