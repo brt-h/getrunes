@@ -60,6 +60,10 @@ class App extends Component {
 
   startButtonHandle(){
     if(this.state.interval == null){
+      let instaStart = this.state.seconds + 1;
+      this.setState({
+        seconds: instaStart,
+      });
       let interval = setInterval(() => this.tick(), 1000);
       this.setState({
         started: true,
@@ -92,7 +96,6 @@ class App extends Component {
   }
 
   handlePlus() {
-    console.log("plus")
     let updatedVol = this.state.volume + 0.1;
     if(updatedVol > 1) {
       updatedVol = 1;
@@ -104,7 +107,6 @@ class App extends Component {
   }
 
   handleMinus() {
-    console.log("minus")
     let updatedVol = this.state.volume - 0.1;
     if(updatedVol < 0) {
       updatedVol = 0;
@@ -116,7 +118,6 @@ class App extends Component {
   }
 
   handleMute() {
-    console.log("mute")
     if(this.state.mute) {
       Howler.mute(false);
       this.setState({

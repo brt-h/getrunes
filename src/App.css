@@ -136,8 +136,8 @@
 }
 
 .sButton {
-  margin: 0.1%;
-  width: 40px;
+  margin: 10px;
+  width: 45px;
   height: 20px;
   display: flex;
   justify-content: center;
