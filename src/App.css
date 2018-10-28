@@ -1,5 +1,5 @@
 .App {
-
+  color: #474b52;
 }
 
 
@@ -12,22 +12,77 @@
 }
 
 .Title {
-  font-size: 6em;
+  font-size: 5.5em;
   text-align: center;
   height: auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bungee', cursive;
   padding: 20px;
-  color: #f37735;
+  color: #ff9a00;
   text-shadow: horizontal-offset vertical-offset blur color;
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
 .TimerContainer {
   margin-top: 2%;
+  width: 600px;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  font-size: 6em;
+  justify-content: center;
+}
+
+.Timer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 10em;
+}
+
+.Show {
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 70%;
+}
+
+.Hidden {
+  display: none;
+}
+
+.TextBubble {
+  font-family: 'Rock Salt', cursive;
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+	position: relative;
+  width: 100%;
+  height: 75%;
+	background: #474b52;
+  color: #ff9a00;
+	border-radius: .4em;
+}
+
+.TextBubble:after {
+  content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 0.625em solid transparent;
+	border-left-color: #474b52;
+	border-right: 0;
+	margin-top: -0.625em;
+	margin-right: -0.625em;
+}
+
+.Bulldog {
+  margin-left: 15%;
+  height: 75px;
+  width: 75px;
 }
 
 .ButtonContainer{
@@ -57,15 +112,15 @@
 }
 
 .StartB {
-  background-color: #00b159;
+  background-color: #00a300;
 }
 
 .StopB {
-  background-color: #d11141;
+  background-color: #ee1111;
 }
 
 .PauseB {
-  background-color: #ffc425;
+  background-color: #ffc40d;
 }
 
 .twitchIco {
@@ -91,7 +146,7 @@
 
 .runeTitle {
   width: 100%;
-  color: #f37735;
+  color: 	#ff9a00;
   text-align: center;
 }
 
