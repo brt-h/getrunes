@@ -204,6 +204,10 @@ class App extends Component {
       this.setState({
         minutes: mins,
       });
+      let goldGiven = 2 * ((Math.floor(mins/5)) * 5 + 5);
+      this.setState({
+        goldGiven: goldGiven,
+      });
     }
   }
 
@@ -221,7 +225,10 @@ class App extends Component {
     this.setState({
       minutes: "",
     });
-    if(this.state.seconds === ""){
+  }
+
+  handleOffFocusMins(event) {
+    if(this.state.minutes === ""){
       this.setState({
         minutes: "00",
       });
@@ -233,6 +240,9 @@ class App extends Component {
     this.setState({
       seconds: "",
     });
+  }
+
+  handleOffFocusSecs(event) {
     if(this.state.seconds === ""){
       this.setState({
         seconds: "00",
@@ -247,6 +257,8 @@ class App extends Component {
           <Title alert={this.state.alertRunes} avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
 
           <Timer
+                  handleOffFocusSecs={(e) => this.handleOffFocusSecs(e)}
+                  handleOffFocusMins={(e) => this.handleOffFocusMins(e)}
                   handleOnFocusMins={(e) => this.handleOnFocusMins(e)}
                   handleOnFocusSecs={(e) => this.handleOnFocusSecs(e)}
                   started={this.state.started}

@@ -6,6 +6,7 @@ class Timer extends Component {
       <div className="TimerContainer">
         <div className="Timer">
           <input type="number"
+                 onBlur={this.props.handleOffFocusMins}
                  onFocus={this.props.handleOnFocusMins}
                  disabled={this.props.started}
                  className="TimerMins"
@@ -13,6 +14,7 @@ class Timer extends Component {
                  onChange={this.props.handleMins}/>
           <div> : </div>
           <input type="number"
+                 onBlur={this.props.handleOffFocusSecs}
                  onFocus={this.props.handleOnFocusSecs}
                  disabled={this.props.started}
                  className="TimerSecs"
