@@ -41,6 +41,7 @@ class App extends Component {
       mute: false,
       avatar: "",
       textbubble: "",
+      prevIndex: null,
     }
   }
   componentDidMount() {
@@ -103,14 +104,17 @@ class App extends Component {
       }
       if((updatedTime + 30) % 300 === 0 || (updatedTime + 10) % 300 === 0){
         let randomIndex = Math.floor(Math.random()*(this.state.sounds.length));
+        while(randomIndex === this.state.prevIndex) {
+          randomIndex = Math.floor(Math.random()*(this.state.sounds.length));
+        }
         let pickedHowl = this.state.sounds[randomIndex][0];
         let pickedText = this.state.sounds[randomIndex][1];
         let pickedImage = this.state.sounds[randomIndex][2];
-        console.log("pickedText" + pickedText);
         this.setState({
           alertRunes: true,
           avatar: pickedImage,
           textbubble: pickedText,
+          prevIndex: randomIndex,
         });
         pickedHowl.play();
       }
@@ -123,7 +127,7 @@ class App extends Component {
       this.setState({
         seconds: instaStart,
       });
-      let interval = setInterval(() => this.tick(), 1000);
+      let interval = setInterval(() => this.tick(), 10);
       this.setState({
         started: true,
         interval: interval,
