@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 
 class Timer extends Component {
   render() {
+    let numberMins;
+    if(this.props.alert){
+      numberMins = "TimerMins highlight"
+    }
+    else {
+      numberMins = "TimerMins"
+    }
+
+    let numberSecs;
+    if(this.props.alert){
+      numberSecs = "TimerSecs highlight"
+    }
+    else {
+      numberSecs = "TimerSecs"
+    }
     return (
       <div className="TimerContainer">
         <div className="Timer">
@@ -9,7 +24,7 @@ class Timer extends Component {
                  onBlur={this.props.handleOffFocusMins}
                  onFocus={this.props.handleOnFocusMins}
                  disabled={this.props.started}
-                 className="TimerMins"
+                 className={numberMins}
                  value={this.props.minutes}
                  onChange={this.props.handleMins}/>
           <div> : </div>
@@ -17,7 +32,7 @@ class Timer extends Component {
                  onBlur={this.props.handleOffFocusSecs}
                  onFocus={this.props.handleOnFocusSecs}
                  disabled={this.props.started}
-                 className="TimerSecs"
+                 className={numberSecs}
                  value={this.props.seconds}
                  onChange={this.props.handleSecs}/>
         </div>

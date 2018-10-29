@@ -11,7 +11,7 @@ class Title extends Component {
     }
     else {
       textbubblepop = "Hidden";
-      titleClass = "Title";
+      titleClass = "Title animated tada";
     }
     return (
       <div className="TitleContainer">
