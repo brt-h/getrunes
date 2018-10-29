@@ -5,9 +5,19 @@ class Timer extends Component {
     return (
       <div className="TimerContainer">
         <div className="Timer">
-          <div className="TimerMins">{this.props.minutes < 10 ? '0'+ this.props.minutes : this.props.minutes}</div>
+          <input type="number"
+                 onFocus={this.props.handleOnFocusMins}
+                 disabled={this.props.started}
+                 className="TimerMins"
+                 value={this.props.minutes}
+                 onChange={this.props.handleMins}/>
           <div> : </div>
-          <div className="TimerSecs">{this.props.seconds < 10 ? '0'+ this.props.seconds : this.props.seconds}</div>
+          <input type="number"
+                 onFocus={this.props.handleOnFocusSecs}
+                 disabled={this.props.started}
+                 className="TimerSecs"
+                 value={this.props.seconds}
+                 onChange={this.props.handleSecs}/>
         </div>
       </div>
     );

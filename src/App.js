@@ -32,8 +32,8 @@ class App extends Component {
     this.state = {
       started: false,
       interval: null,
-      seconds: 28,
-      minutes: 4,
+      seconds: '00',
+      minutes: '00',
       alertRunes: false,
       goldGiven: 0,
       sounds: [],
@@ -65,7 +65,7 @@ class App extends Component {
     });
 
     let BulldogSounds1 = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
-    let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes! Get the runes, for the love of God!',BulldogAvatar);
+    let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes! For the love of God!',BulldogAvatar);
     let BulldogSounds3 = helperFunc(BulldogRoon3,'Get the Roons!',BulldogAvatar);
     let PudgeSounds = helperFunc(PudgeRoon1,'Bounty!',PudgeAvatar);
     let KunkkaSounds = helperFunc(KunkkaRoon1,'Bounty!',KunkkaAvatar);
@@ -87,10 +87,18 @@ class App extends Component {
 
   tick(){
     if(this.state.started) {
-      let currentTime = this.state.seconds + this.state.minutes * 60;
+      let currentTime = parseInt(this.state.seconds) + parseInt(this.state.minutes) * 60;
       let updatedTime = currentTime + 1;
       let newSeconds = updatedTime % 60;
       let newMinutes = Math.floor(updatedTime / 60);
+
+      if(newMinutes > 0 && newMinutes < 10) {
+        newMinutes = '0' + newMinutes;
+      }
+      if(newSeconds > 0 && newSeconds < 10) {
+        newSeconds = '0' + newSeconds;
+      }
+
       this.setState({
         seconds: newSeconds,
         minutes: newMinutes,
@@ -123,10 +131,6 @@ class App extends Component {
 
   startButtonHandle(){
     if(this.state.interval == null){
-      let instaStart = this.state.seconds + 1;
-      this.setState({
-        seconds: instaStart,
-      });
       let interval = setInterval(() => this.tick(), 1000);
       this.setState({
         started: true,
@@ -144,8 +148,8 @@ class App extends Component {
     clearInterval(this.state.interval);
     this.setState({
       interval: null,
-      seconds: 0,
-      minutes: 0,
+      seconds: '00',
+      minutes: '00',
       alertRunes: false,
       goldGiven: 0,
       started: false,
@@ -194,13 +198,53 @@ class App extends Component {
     }
   }
 
+  handleInputMins(event) {
+    if(event.target.value !== undefined){
+      let mins = parseInt(event.target.value)
+      this.setState({
+        minutes: mins,
+      });
+    }
+  }
+
+  handleInputSecs(event) {
+    if(event.target.value !== undefined){
+      let secs = parseInt(event.target.value)
+      this.setState({
+        seconds: secs,
+      });
+    }
+  }
+
+  handleOnFocusMins(event) {
+    event.preventDefault();
+    this.setState({
+      minutes: '00',
+    });
+  }
+
+  handleOnFocusSecs(event) {
+    event.preventDefault();
+    this.setState({
+      seconds: '00',
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="mainContainer">
           <Title alert={this.state.alertRunes} avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
 
-          <Timer alert={this.state.alertRunes} minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
+          <Timer
+                  handleOnFocusMins={(e) => this.handleOnFocusMins(e)}
+                  handleOnFocusSecs={(e) => this.handleOnFocusSecs(e)}
+                  started={this.state.started}
+                  alert={this.state.alertRunes}
+                  minutes={this.state.minutes}
+                  seconds={this.state.seconds}
+                  handleSecs={(e) => this.handleInputSecs(e)}
+                  handleMins={(e) => this.handleInputMins(e)}></Timer>
 
           <ButtonContainer started={this.state.started}
                            vol={this.state.volume}
