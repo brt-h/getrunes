@@ -11,14 +11,28 @@
   align-items: center;
 }
 
+.TitleContainer {
+  width: 100%;
+  height: 146px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Title {
-  font-size: 5.5em;
+  font-size: 3.4em;
   text-align: center;
   font-family: 'Bungee', cursive;
   padding: 20px;
   color: #ff9a00;
   text-shadow: horizontal-offset vertical-offset blur color;
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+@media only screen and (min-width: 630px) {
+    .Title {
+        font-size:5.5em;
+    }
 }
 
 .TimerContainer {
@@ -34,7 +48,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  font-size: 10em;
+  font-size: 7em;
 }
 
 .Show {
@@ -42,8 +56,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 100%;
-  height: 100%;
+  width: 600px;
+  height: 145px;
 }
 
 .Hidden {
@@ -58,7 +72,7 @@
   align-items: center;
   justify-content: center;
 	position: relative;
-  width: 30%;
+  width: 50%;
   height: 100px;
 	background: #474b52;
   color: #ff9a00;
@@ -79,7 +93,7 @@
 	margin-right: -0.625em;
 }
 
-.Bulldog {
+.Avatar {
   margin-left: 5%;
   height: 75px;
   width: 75px;
@@ -92,9 +106,9 @@
 }
 
 .Button {
-  margin: 5%;
-  width: 200px;
-  height: 80px;
+  margin: 5% 5%;
+  width: 150px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,6 +143,7 @@
 }
 
 .SoundContainer {
+  width: 390px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -136,13 +151,14 @@
 }
 
 .volRow{
-  width: 50%;
-  margin-right: 15px;
+
 }
 
 .ButtonRow{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .sButton {

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 class SoundButtonContainer extends Component {
   render() {
-    console.log(this.props.vol)
-    console.log(this.props.mute)
     let userVol = Math.round(this.props.vol * 10);
     let muteToggle;
     if(!this.props.mute) {

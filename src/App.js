@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import Timer from './components/Timer.js';
+import Title from './components/Title.js';
 import ButtonContainer from './components/ButtonContainer.js';
 import RunesContainer from './components/RunesContainer.js';
 import SoundButtonContainer from './components/SoundButtonContainer.js';
 import {Howl, Howler} from 'howler';
-import soundfile from './roons_short.mp3';
 import './App.css';
+
+import BulldogAvatar from './images/bulldog.jpg';
+import BulldogRoons from './sounds/roons_short.mp3';
+
+import SingsingAvatar from './images/singsing.png';
+import SingsingRoons from './sounds/sing_bounty_runes.mp3';
+
+import PudgeAvatar from './images/pudge_avatar.png';
+import PudgeRoons from './sounds/Pud_arc_bounty_01.mp3';
+
+import KunkkaAvatar from './images/Avatar_kunkka.png';
+import KunkkaRoons from './sounds/Kunk_bounty_02.mp3';
+
+let helperFunc = function(howl,text="",imageURL) {
+  return [howl,text,imageURL];
+}
+
 
 class App extends Component {
   constructor(props){
@@ -20,14 +37,37 @@ class App extends Component {
       sounds: [],
       volume: 0.5,
       mute: false,
+      avatar: "",
+      textbubble: "",
     }
   }
   componentDidMount() {
-    let roons_sound = new Howl({
-      src: [soundfile]
+    let BulldogRoon1 = new Howl({
+      src: [BulldogRoons]
     });
+    let PudgeRoon1 = new Howl({
+      src: [PudgeRoons]
+    });
+    let KunkkaRoon1 = new Howl({
+      src: [KunkkaRoons]
+    });
+    let SingsingRoon1 = new Howl({
+      src: [SingsingRoons]
+    });
+
+    let BulldogSounds = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
+    let PudgeSounds = helperFunc(PudgeRoon1,'Bounty!',PudgeAvatar);
+    let KunkkaSounds = helperFunc(KunkkaRoon1,'Bounty!',KunkkaAvatar);
+    let SingsingSounds = helperFunc(SingsingRoon1,'Bounty Runes!',SingsingAvatar);
+
+    let newSoundArr = [];
+    newSoundArr.push(BulldogSounds);
+    newSoundArr.push(PudgeSounds);
+    newSoundArr.push(KunkkaSounds);
+    newSoundArr.push(SingsingSounds);
+
     this.setState({
-        sounds:[roons_sound]
+        sounds: newSoundArr,
     })
 
   }
@@ -49,11 +89,18 @@ class App extends Component {
           alertRunes: false,
         })
       }
-      if((updatedTime + 20) % 300 === 0){
-        this.state.sounds[0].play();
+      if((updatedTime + 20) % 300 === 0 || (updatedTime + 10) % 300 === 0){
+        let randomIndex = Math.floor(Math.random()*(this.state.sounds.length));
+        let pickedHowl = this.state.sounds[randomIndex][0];
+        let pickedText = this.state.sounds[randomIndex][1];
+        let pickedImage = this.state.sounds[randomIndex][2];
+        console.log("pickedText" + pickedText);
         this.setState({
           alertRunes: true,
-        })
+          avatar: pickedImage,
+          textbubble: pickedText,
+        });
+        pickedHowl.play();
       }
     }
   }
@@ -135,9 +182,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="mainContainer">
-          <div className="Title">
-            <span style={{color: '#474b52'}}>GET</span> RUNES!
-          </div>
+          <Title alert={this.state.alertRunes} avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
 
           <Timer alert={this.state.alertRunes} minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
 
