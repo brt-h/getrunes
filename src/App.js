@@ -65,7 +65,7 @@ class App extends Component {
     });
 
     let BulldogSounds1 = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
-    let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes get the runes for the love of God!',BulldogAvatar);
+    let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes! Get the runes, for the love of God!',BulldogAvatar);
     let BulldogSounds3 = helperFunc(BulldogRoon3,'Get the Roons!',BulldogAvatar);
     let PudgeSounds = helperFunc(PudgeRoon1,'Bounty!',PudgeAvatar);
     let KunkkaSounds = helperFunc(KunkkaRoon1,'Bounty!',KunkkaAvatar);
@@ -127,7 +127,7 @@ class App extends Component {
       this.setState({
         seconds: instaStart,
       });
-      let interval = setInterval(() => this.tick(), 10);
+      let interval = setInterval(() => this.tick(), 1000);
       this.setState({
         started: true,
         interval: interval,
