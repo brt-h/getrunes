@@ -8,7 +8,9 @@ import {Howl, Howler} from 'howler';
 import './App.css';
 
 import BulldogAvatar from './images/bulldog.jpg';
-import BulldogRoons from './sounds/roons_short.mp3';
+import BulldogRoons1 from './sounds/roons_short.mp3';
+import BulldogRoons2 from './sounds/love_of_god.mp3';
+import BulldogRoons3 from './sounds/get_the_runes_bulldog.mp3';
 
 import SingsingAvatar from './images/singsing.png';
 import SingsingRoons from './sounds/sing_bounty_runes.mp3';
@@ -30,7 +32,7 @@ class App extends Component {
     this.state = {
       started: false,
       interval: null,
-      seconds: 38,
+      seconds: 28,
       minutes: 4,
       alertRunes: false,
       goldGiven: 0,
@@ -43,7 +45,13 @@ class App extends Component {
   }
   componentDidMount() {
     let BulldogRoon1 = new Howl({
-      src: [BulldogRoons]
+      src: [BulldogRoons1]
+    });
+    let BulldogRoon2 = new Howl({
+      src: [BulldogRoons2]
+    });
+    let BulldogRoon3 = new Howl({
+      src: [BulldogRoons3]
     });
     let PudgeRoon1 = new Howl({
       src: [PudgeRoons]
@@ -55,13 +63,17 @@ class App extends Component {
       src: [SingsingRoons]
     });
 
-    let BulldogSounds = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
+    let BulldogSounds1 = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
+    let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes get the runes for the love of God!',BulldogAvatar);
+    let BulldogSounds3 = helperFunc(BulldogRoon3,'Get the Roons!',BulldogAvatar);
     let PudgeSounds = helperFunc(PudgeRoon1,'Bounty!',PudgeAvatar);
     let KunkkaSounds = helperFunc(KunkkaRoon1,'Bounty!',KunkkaAvatar);
     let SingsingSounds = helperFunc(SingsingRoon1,'Bounty Runes!',SingsingAvatar);
 
     let newSoundArr = [];
-    newSoundArr.push(BulldogSounds);
+    newSoundArr.push(BulldogSounds1);
+    newSoundArr.push(BulldogSounds2);
+    newSoundArr.push(BulldogSounds3);
     newSoundArr.push(PudgeSounds);
     newSoundArr.push(KunkkaSounds);
     newSoundArr.push(SingsingSounds);
@@ -89,7 +101,7 @@ class App extends Component {
           alertRunes: false,
         })
       }
-      if((updatedTime + 20) % 300 === 0 || (updatedTime + 10) % 300 === 0){
+      if((updatedTime + 30) % 300 === 0 || (updatedTime + 10) % 300 === 0){
         let randomIndex = Math.floor(Math.random()*(this.state.sounds.length));
         let pickedHowl = this.state.sounds[randomIndex][0];
         let pickedText = this.state.sounds[randomIndex][1];
