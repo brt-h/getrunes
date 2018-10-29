@@ -92,10 +92,10 @@ class App extends Component {
       let newSeconds = updatedTime % 60;
       let newMinutes = Math.floor(updatedTime / 60);
 
-      if(newMinutes > 0 && newMinutes < 10) {
+      if(newMinutes > -1 && newMinutes < 10) {
         newMinutes = '0' + newMinutes;
       }
-      if(newSeconds > 0 && newSeconds < 10) {
+      if(newSeconds > -1 && newSeconds < 10) {
         newSeconds = '0' + newSeconds;
       }
 
