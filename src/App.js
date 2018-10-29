@@ -284,6 +284,9 @@ class App extends Component {
           mute={this.state.mute}></SoundButtonContainer>
 
           <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
+          <footer>
+            Made by TK and Rob, in BETA
+          </footer>
         </div>
       </div>
     );

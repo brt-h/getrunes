@@ -255,3 +255,10 @@ input[type=number]::-webkit-outer-spin-button {
 .highlight {
   color: #ff9a00;
 }
+
+footer {
+  margin-top: 5%;
+  padding: 3%;
+  width: 100%;
+  text-align: center;
+}
