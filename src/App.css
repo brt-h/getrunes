@@ -79,6 +79,10 @@ input[value] {
   font-family: 'VT323', monospace;
 }
 
+input:disabled {
+  background-color: white;
+}
+
 .Show {
   display: flex;
   justify-content: center;
