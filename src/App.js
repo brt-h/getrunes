@@ -142,6 +142,8 @@ class App extends Component {
           <Timer alert={this.state.alertRunes} minutes={this.state.minutes} seconds={this.state.seconds}></Timer>
 
           <ButtonContainer started={this.state.started}
+                           vol={this.state.volume}
+                           mute={this.state.mute}
                            handleClickStart={() => this.startButtonHandle()}
                            handleClickStop={() =>this.stopButtonHandle()}
                            handleClickPause={() =>this.pauseButtonHandle()}>
