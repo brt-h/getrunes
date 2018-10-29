@@ -6,7 +6,7 @@ class SoundButtonContainer extends Component {
     console.log(this.props.mute)
     let userVol = Math.round(this.props.vol * 10);
     let muteToggle;
-    if(this.props.mute) {
+    if(!this.props.mute) {
       muteToggle = <div className="sButton" onClick={this.props.handleMute}>Mute</div>
     }
     else {
