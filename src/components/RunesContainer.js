@@ -14,14 +14,14 @@ class RunesContainer extends Component {
             <div className="runeRow">4</div>
           </div>
           <div className="runeCol">
-            <div className="runeTitle">Gold Per Player</div>
+            <div className="runeTitle">Per Player</div>
             <div className="runeRow odd">{(this.props.goldGiven + 40) * 1}</div>
             <div className="runeRow">{(this.props.goldGiven + 40) * 2}</div>
             <div className="runeRow odd">{(this.props.goldGiven + 40) * 3}</div>
             <div className="runeRow">{(this.props.goldGiven + 40) * 4}</div>
           </div>
           <div className="runeCol">
-            <div className="runeTitle">Gold Per Team</div>
+            <div className="runeTitle">Per Team</div>
             <div className="runeRow odd">{((this.props.goldGiven + 40) * 1) * 5}</div>
             <div className="runeRow">{((this.props.goldGiven + 40) * 2) * 5}</div>
             <div className="runeRow odd">{((this.props.goldGiven + 40) * 3) * 5}</div>

@@ -4,6 +4,7 @@ import Bulldog from './bulldog.jpg';
 class Timer extends Component {
   render() {
     let textbubblepop;
+    let timer;
     if(this.props.alert) {
       textbubblepop = "Show animated bounceIn";
     }
