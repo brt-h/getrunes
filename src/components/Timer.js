@@ -17,6 +17,7 @@ class Timer extends Component {
     else {
       numberSecs = "TimerSecs"
     }
+    
     return (
       <div className="TimerContainer">
         <div className="Timer">

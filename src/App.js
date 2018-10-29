@@ -93,11 +93,13 @@ class App extends Component {
       let newMinutes = Math.floor(updatedTime / 60);
 
       if(newMinutes > -1 && newMinutes < 10) {
-        newMinutes = '0' + newMinutes;
+        newMinutes = '0' + newMinutes.toString();
       }
       if(newSeconds > -1 && newSeconds < 10) {
-        newSeconds = '0' + newSeconds;
+        newSeconds = '0' + newSeconds.toString();
       }
+      console.log('newSeconds: ' + newSeconds);
+      console.log('newMinutes: ' + newMinutes);
 
       this.setState({
         seconds: newSeconds,
