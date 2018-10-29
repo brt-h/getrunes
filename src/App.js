@@ -219,15 +219,25 @@ class App extends Component {
   handleOnFocusMins(event) {
     event.preventDefault();
     this.setState({
-      minutes: '00',
+      minutes: "",
     });
+    if(this.state.seconds === ""){
+      this.setState({
+        minutes: "00",
+      });
+    }
   }
 
   handleOnFocusSecs(event) {
     event.preventDefault();
     this.setState({
-      seconds: '00',
+      seconds: "",
     });
+    if(this.state.seconds === ""){
+      this.setState({
+        seconds: "00",
+      });
+    }
   }
 
   render() {
