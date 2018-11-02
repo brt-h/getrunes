@@ -39,7 +39,7 @@ class App extends Component {
       alertRunes: false,
       goldGiven: 0,
       sounds: [],
-      volume: 0.5,
+      volume: 0.3,
       mute: false,
       avatar: "",
       textbubble: "",
