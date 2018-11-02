@@ -104,8 +104,12 @@ class App extends Component {
       }
       let updatedTime = currentTime + 1;
       let newSeconds = updatedTime % 60;
-      if(newMinutes > 0) {
+      if(newMinutes > -1) {
         newMinutes = Math.floor(updatedTime / 60);
+
+        if (newMinutes === -1) {
+          newMinutes = 0;
+        }
       }
 
       if(newMinutes > -1 && newMinutes < 10) {
@@ -227,7 +231,7 @@ class App extends Component {
   }
 
   handleInputMins(event) {
-    if(event.target.value === NaN) {
+    if(isNaN(event.target.value)) {
       this.setState({
         minutes: "00",
       });
@@ -245,7 +249,7 @@ class App extends Component {
   }
 
   handleInputSecs(event) {
-    if(event.target.value === NaN) {
+    if(isNaN(event.target.value)) {
       this.setState({
         seconds: "00",
       });
