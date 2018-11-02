@@ -286,7 +286,7 @@ class App extends Component {
       <div className="App">
         <div className="mainContainer">
           <Title alert={this.state.alertRunes} avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
-          <div className="description">Match the timer to your in-game time to be reminded of bounty runes spawn times</div>
+          <div className="description">Match the timer to your in-game time to be reminded of bounty runes spawn times and gold received</div>
           <Timer
                   handleOffFocusSecs={(e) => this.handleOffFocusSecs(e)}
                   handleOffFocusMins={(e) => this.handleOffFocusMins(e)}
