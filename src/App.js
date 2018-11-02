@@ -7,6 +7,8 @@ import SoundButtonContainer from './components/SoundButtonContainer.js';
 import {Howl, Howler} from 'howler';
 import './App.css';
 
+import BountySound from './sounds/Rune_of_Bounty.mp3';
+
 import BulldogAvatar from './images/bulldog.jpg';
 import BulldogRoons1 from './sounds/roons_short.mp3';
 import BulldogRoons2 from './sounds/love_of_god.mp3';
@@ -42,8 +44,10 @@ class App extends Component {
       avatar: "",
       textbubble: "",
       prevIndex: null,
+      bountyS: null,
     }
   }
+
   componentDidMount() {
     let BulldogRoon1 = new Howl({
       src: [BulldogRoons1]
@@ -63,6 +67,9 @@ class App extends Component {
     let SingsingRoon1 = new Howl({
       src: [SingsingRoons]
     });
+    let Bounty = new Howl({
+      src: [BountySound]
+    });
 
     let BulldogSounds1 = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
     let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes! For the love of God!',BulldogAvatar);
@@ -81,6 +88,7 @@ class App extends Component {
 
     this.setState({
         sounds: newSoundArr,
+        bountyS: Bounty,
     })
 
   }
@@ -106,14 +114,13 @@ class App extends Component {
       if(newSeconds > -1 && newSeconds < 10) {
         newSeconds = '0' + newSeconds.toString();
       }
-      console.log('newSeconds: ' + newSeconds);
-      console.log('newMinutes: ' + newMinutes);
 
       this.setState({
         seconds: newSeconds,
         minutes: newMinutes,
       });
       if(updatedTime % 300 === 0){
+        this.state.bountyS.play();
         let goldGiven = 2 * (this.state.minutes + 5);
         this.setState({
           goldGiven: goldGiven,
@@ -285,7 +292,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="mainContainer">
-          <Title alert={this.state.alertRunes} avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
+          <Title
+            alert={this.state.alertRunes}
+            avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
           <div className="description">Match the timer to your in-game time to be reminded of bounty runes spawn times and gold received.</div>
           <Timer
                   handleOffFocusSecs={(e) => this.handleOffFocusSecs(e)}
