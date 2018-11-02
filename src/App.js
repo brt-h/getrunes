@@ -128,13 +128,13 @@ class App extends Component {
       });
 
 
-      if(updatedTime % 300 === 0 || currentTime === 0){
+      if(updatedTime % 300 === 0){
         this.state.bountyS.play();
         let goldGiven = 2 * (parseInt(this.state.minutes) + 5);
         this.setState({
           goldGiven: goldGiven,
           alertRunes: false,
-        })
+        });
       }
 
       if((updatedTime + 30) % 300 === 0 || (updatedTime + 10) % 300 === 0){
@@ -186,7 +186,7 @@ class App extends Component {
     clearInterval(this.state.interval);
     this.setState({
       interval: null,
-      seconds: '00',
+      seconds: '-45',
       minutes: '00',
       alertRunes: false,
       goldGiven: 0,
