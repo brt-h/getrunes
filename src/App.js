@@ -32,7 +32,7 @@ class App extends Component {
     this.state = {
       started: false,
       interval: null,
-      seconds: '00',
+      seconds: '-45',
       minutes: '00',
       alertRunes: false,
       goldGiven: 0,
@@ -87,10 +87,18 @@ class App extends Component {
 
   tick(){
     if(this.state.started) {
-      let currentTime = parseInt(this.state.seconds) + parseInt(this.state.minutes) * 60;
+      let currentTime = 0;
+      let newMinutes = 0;
+      if(parseInt(this.state.minutes) > -1) {
+        currentTime = parseInt(this.state.seconds) + parseInt(this.state.minutes) * 60;
+      } else {
+        currentTime = parseInt(this.state.seconds)
+      }
       let updatedTime = currentTime + 1;
       let newSeconds = updatedTime % 60;
-      let newMinutes = Math.floor(updatedTime / 60);
+      if(newMinutes > 0) {
+        newMinutes = Math.floor(updatedTime / 60);
+      }
 
       if(newMinutes > -1 && newMinutes < 10) {
         newMinutes = '0' + newMinutes.toString();
@@ -132,17 +140,28 @@ class App extends Component {
   }
 
   startButtonHandle(){
-    if(this.state.interval == null){
-      let interval = setInterval(() => this.tick(), 1000);
+    if(this.state.minutes < 0) {
+      window.alert("minutes cannot be negative")
       this.setState({
-        started: true,
-        interval: interval,
+        minutes: "00",
+        seconds: "-45",
+        started: false,
+        goldGiven: 0,
       });
     }
     else {
-      this.setState({
-        started: true,
-      });
+      if(this.state.interval == null){
+        let interval = setInterval(() => this.tick(), 1000);
+        this.setState({
+          started: true,
+          interval: interval,
+        });
+      }
+      else {
+        this.setState({
+          started: true,
+        });
+      }
     }
   }
 
@@ -201,6 +220,11 @@ class App extends Component {
   }
 
   handleInputMins(event) {
+    if(event.target.value === NaN) {
+      this.setState({
+        minutes: "00",
+      });
+    }
     if(event.target.value !== undefined){
       let mins = parseInt(event.target.value)
       this.setState({
@@ -214,6 +238,11 @@ class App extends Component {
   }
 
   handleInputSecs(event) {
+    if(event.target.value === NaN) {
+      this.setState({
+        seconds: "00",
+      });
+    }
     if(event.target.value !== undefined){
       let secs = parseInt(event.target.value)
       this.setState({
@@ -257,7 +286,7 @@ class App extends Component {
       <div className="App">
         <div className="mainContainer">
           <Title alert={this.state.alertRunes} avatar={this.state.avatar} textbubble={this.state.textbubble}></Title>
-
+          <div className="description">Match the timer to your in-game time to be reminded of bounty runes spawn times</div>
           <Timer
                   handleOffFocusSecs={(e) => this.handleOffFocusSecs(e)}
                   handleOffFocusMins={(e) => this.handleOffFocusMins(e)}

@@ -6,10 +6,12 @@ class ButtonContainer extends Component {
     if (this.props.started) {
       button = <div className="Button PauseB" onClick={this.props.handleClickPause}>
       <img className="twitchIco" src={"https://static-cdn.jtvnw.net/emoticons/v1/65/1.0"}/>
+         Pause
       </div>;
     } else {
       button = <div className="Button StartB" onClick={this.props.handleClickStart}>
       <img className="twitchIco" src={"https://static-cdn.jtvnw.net/emoticons/v1/81248/1.0"}/>
+         Start
       </div>;
     }
     return (
@@ -17,6 +19,7 @@ class ButtonContainer extends Component {
         {button}
         <div className="Button StopB" onClick={this.props.handleClickStop}>
         <img className="twitchIco" src={"https://static-cdn.jtvnw.net/emoticons/v1/22639/1.0"}/>
+          Stop
         </div>
       </div>
     );
