@@ -97,13 +97,16 @@ class App extends Component {
     if(this.state.started) {
       let currentTime = 0;
       let newMinutes = 0;
+
       if(parseInt(this.state.minutes) > -1) {
         currentTime = parseInt(this.state.seconds) + parseInt(this.state.minutes) * 60;
       } else {
         currentTime = parseInt(this.state.seconds)
       }
+
       let updatedTime = currentTime + 1;
       let newSeconds = updatedTime % 60;
+
       if(newMinutes > -1) {
         newMinutes = Math.floor(updatedTime / 60);
 
@@ -123,14 +126,17 @@ class App extends Component {
         seconds: newSeconds,
         minutes: newMinutes,
       });
-      if(updatedTime % 300 === 0){
+
+
+      if(updatedTime % 300 === 0 || currentTime === 0){
         this.state.bountyS.play();
-        let goldGiven = 2 * (this.state.minutes + 5);
+        let goldGiven = 2 * (parseInt(this.state.minutes) + 5);
         this.setState({
           goldGiven: goldGiven,
           alertRunes: false,
         })
       }
+
       if((updatedTime + 30) % 300 === 0 || (updatedTime + 10) % 300 === 0){
         let randomIndex = Math.floor(Math.random()*(this.state.sounds.length));
         while(randomIndex === this.state.prevIndex) {
