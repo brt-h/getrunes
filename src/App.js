@@ -90,7 +90,7 @@ class App extends Component {
     });
     // let PurgeRoon2 = new Howl({
     //   src: [PurgeRoons2]
-    });
+    // });
     let KunkkaRoon1 = new Howl({
       src: [KunkkaRoons]
     });
@@ -102,7 +102,7 @@ class App extends Component {
     });
     // let GorgcRoon1 = new Howl({
     //   src: [GorgcRoons1]
-    });
+    // });
     let GorgcRoon2 = new Howl({
       src: [GorgcRoons2]
     });
