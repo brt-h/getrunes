@@ -53,7 +53,7 @@ class App extends Component {
       alertRunes: false,
       goldGiven: 0,
       sounds: [],
-      volume: 0.3,
+      volume: 0.5,
       mute: false,
       avatar: "",
       textbubble: "",
@@ -63,6 +63,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+
     let BulldogRoon1 = new Howl({
       src: [BulldogRoons1]
     });
@@ -108,7 +109,7 @@ class App extends Component {
     let Bounty = new Howl({
       src: [BountySound]
     });
-
+    Howler.volume(0.5);
     let BulldogSounds1 = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
     let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes! For the love of God!',BulldogAvatar);
     let BulldogSounds3 = helperFunc(BulldogRoon3,'Get the Roons!',BulldogAvatar);
