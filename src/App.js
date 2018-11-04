@@ -13,9 +13,23 @@ import BulldogAvatar from './images/bulldog.jpg';
 import BulldogRoons1 from './sounds/roons_short.mp3';
 import BulldogRoons2 from './sounds/love_of_god.mp3';
 import BulldogRoons3 from './sounds/get_the_runes_bulldog.mp3';
+import BulldogRoons4 from './sounds/roonsX5.mp3';
+
+import GorgcAvatar from './images/gorgc.jpg';
+import GorgcRoons1 from './sounds/gorgc_bounty.mp3';
+import GorgcRoons2 from './sounds/gorgc_pesant_work.mp3';
 
 import SingsingAvatar from './images/singsing.png';
 import SingsingRoons from './sounds/sing_bounty_runes.mp3';
+import SingsingRoons1 from './sounds/yellow_fucking_runes.mp3';
+
+import MasonAvatar from './images/mason.jpeg';
+import MasonRoons from './sounds/mason.mp3';
+
+import PurgeAvatar from './images/purge.jpeg';
+import PurgeRoons from './sounds/purge1.mp3';
+import PurgeRoons1 from './sounds/purge4.mp3';
+import PurgeRoons2 from './sounds/purge5.mp3';
 
 import PudgeAvatar from './images/pudge_avatar.png';
 import PudgeRoons from './sounds/Pud_arc_bounty_01.mp3';
@@ -58,14 +72,38 @@ class App extends Component {
     let BulldogRoon3 = new Howl({
       src: [BulldogRoons3]
     });
+    let BulldogRoon4 = new Howl({
+      src: [BulldogRoons4]
+    });
+    let MasonRoon = new Howl({
+      src: [MasonRoons]
+    });
     let PudgeRoon1 = new Howl({
       src: [PudgeRoons]
+    });
+    let PurgeRoon = new Howl({
+      src: [PurgeRoons]
+    });
+    let PurgeRoon1 = new Howl({
+      src: [PurgeRoons1]
+    });
+    let PurgeRoon2 = new Howl({
+      src: [PurgeRoons2]
     });
     let KunkkaRoon1 = new Howl({
       src: [KunkkaRoons]
     });
     let SingsingRoon1 = new Howl({
       src: [SingsingRoons]
+    });
+    let SingsingRoon2 = new Howl({
+      src: [SingsingRoons1]
+    });
+    let GorgcRoon1 = new Howl({
+      src: [GorgcRoons1]
+    });
+    let GorgcRoon2 = new Howl({
+      src: [GorgcRoons2]
     });
     let Bounty = new Howl({
       src: [BountySound]
@@ -74,17 +112,33 @@ class App extends Component {
     let BulldogSounds1 = helperFunc(BulldogRoon1,'ROOONS!',BulldogAvatar);
     let BulldogSounds2 = helperFunc(BulldogRoon2,'Get the runes! For the love of God!',BulldogAvatar);
     let BulldogSounds3 = helperFunc(BulldogRoon3,'Get the Roons!',BulldogAvatar);
+    let BulldogSounds4 = helperFunc(BulldogRoon4, 'roons, roons, roons...',BulldogAvatar);
     let PudgeSounds = helperFunc(PudgeRoon1,'Bounty!',PudgeAvatar);
+    let PurgeSounds1 = helperFunc(PurgeRoon, 'Bounty Runes', PurgeAvatar);
+    let PurgeSounds2 = helperFunc(PurgeRoon1, 'Bounty Runes', PurgeAvatar);
+    let PurgeSounds3 = helperFunc(PurgeRoon2, 'The Ruunes', PurgeAvatar);
     let KunkkaSounds = helperFunc(KunkkaRoon1,'Bounty!',KunkkaAvatar);
     let SingsingSounds = helperFunc(SingsingRoon1,'Bounty Runes!',SingsingAvatar);
+    let SingsingSounds1 = helperFunc(SingsingRoon2, 'The Yellow F$%^ing Runes!',SingsingAvatar);
+    let MasonSounds = helperFunc(MasonRoon, 'ROooOones', MasonAvatar);
+    let GorgcSounds1 = helperFunc(GorgcRoon1, 'Bounty!', GorgcAvatar);
+    let GorgcSounds2 = helperFunc(GorgcRoon2, 'This is peasant work, why do I have to pick up the bounty rune.', GorgcAvatar);
 
     let newSoundArr = [];
     newSoundArr.push(BulldogSounds1);
     newSoundArr.push(BulldogSounds2);
     newSoundArr.push(BulldogSounds3);
+    newSoundArr.push(BulldogSounds4);
     newSoundArr.push(PudgeSounds);
+    newSoundArr.push(PurgeSounds1);
+    newSoundArr.push(PurgeSounds2);
+    newSoundArr.push(PurgeSounds3);
     newSoundArr.push(KunkkaSounds);
     newSoundArr.push(SingsingSounds);
+    newSoundArr.push(SingsingSounds1);
+    newSoundArr.push(MasonSounds);
+    newSoundArr.push(GorgcSounds1);
+    newSoundArr.push(GorgcSounds2);
 
     this.setState({
         sounds: newSoundArr,
@@ -335,8 +389,11 @@ class App extends Component {
 
           <RunesContainer goldGiven={this.state.goldGiven}></RunesContainer>
           <footer>
-            Made by TK and Rob, in BETA
+            Made by TK and Rob
           </footer>
+          <div>
+           email sound clips to getrunes@gmail.com
+          </div>
         </div>
       </div>
     );
