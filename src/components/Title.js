@@ -20,7 +20,7 @@ class Title extends Component {
         </div>
         <div className={textbubblepop}>
           <div className="TextBubble">{this.props.textbubble}</div>
-          <img className="Avatar" src={this.props.avatar}/>
+          <img className="Avatar" src={this.props.avatar} alt=""/>
         </div>
       </div>
     );
